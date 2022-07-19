@@ -22,8 +22,11 @@ public class BSERReferralFeedbackComposition extends Composition{
 	 */
 	private static final long serialVersionUID = 5596418485277827438L;
 	
-	public BSERReferralFeedbackComposition() {
-		
+	public BSERReferralFeedbackComposition(Reference subject,
+			Date date, Reference author, String title, Reference serviceRequest,
+			Reference activityStatus) {
+		super();
+		commonConstructor(subject,date,author,title,serviceRequest,activityStatus);
 	}
 	
 	private BSERReferralFeedbackComposition commonConstructor(Reference subject,
@@ -42,6 +45,7 @@ public class BSERReferralFeedbackComposition extends Composition{
 		
 		SectionComponent feedbackSupportInfoSection = new SectionComponent();
 		feedbackSupportInfoSection.setCode(BSERReferralFeedbackCompositionUtil.referralFeedbackSupportingInformationSectionCode);
+		//TODO: Add supporting Information resources.
 //		feedbackSupportInfoSection.addEntry(activityStatus);
 		
 		super.addSection(summarySection);

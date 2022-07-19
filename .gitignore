@@ -14,6 +14,7 @@ Desktop.ini
 # Eclipse configuration
 .classpath
 .project
+.settings
 # Thumbnail cache files
 ._*
 Thumbs.db

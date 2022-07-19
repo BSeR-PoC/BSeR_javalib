@@ -8,39 +8,45 @@ import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.ServiceRequest;
+import org.hl7.fhir.r4.model.ServiceRequest.ServiceRequestStatus;
 import org.hl7.fhir.r4.model.Task;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.BSER.model.util.BSERReferralTaskUtil;
 import edu.gatech.chai.BSER.model.util.CommonUtil;
 
-@ResourceDef(name = "Task", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ReferralTask")
-public class BSERReferralTask extends Task{
-	public BSERReferralTask(String referralInitatorIdentifier,
+@ResourceDef(name = "ServiceRequest", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ReferralServiceRequest")
+public class BSERReferralServiceRequest extends ServiceRequest{
+	public BSERReferralServiceRequest(String referralInitatorIdentifier,
 			String referralRecipientIdentifier, Reference organization,
-			TaskStatus status, CodeableConcept businessStatus,
-			Reference serviceRequest, Date authoredOn,
+			ServiceRequestStatus status, CodeableConcept code,
+			Reference subject, Date occurrence,
 			Reference referralInitiatorReference,
-			Reference referralRecipientReference) {
+			Reference referralRecipientReference,
+			Reference supportingInfo) {
 		super();
 		commonConstructor(referralInitatorIdentifier,
-				referralRecipientIdentifier, organization, status,
-				businessStatus, serviceRequest, authoredOn,
-				referralInitiatorReference, referralRecipientReference);
+				referralRecipientIdentifier, organization, status, code, subject,
+				occurrence, referralInitiatorReference,
+				referralRecipientReference, supportingInfo);
 	}
 	
-	private BSERReferralTask commonConstructor(String referralInitatorIdentifier,
+	private BSERReferralServiceRequest commonConstructor(String referralInitatorIdentifier,
 			String referralRecipientIdentifier, Reference organization,
-			TaskStatus status, CodeableConcept businessStatus,
-			Reference serviceRequest, Date authoredOn,
+			ServiceRequestStatus status, CodeableConcept code,
+			Reference subject, Date occurrence,
 			Reference referralInitiatorReference,
-			Reference referralRecipientReference) {
-		CommonUtil.isValidReference(serviceRequest, "ServiceRequest");
+			Reference referralRecipientReference,
+			Reference supportingInfo) {
 		CommonUtil.isValidReference(organization, "Organization");
+		CommonUtil.isValidReference(subject, "Patient");
 		CommonUtil.isValidReference(referralInitiatorReference,
 				"PractitionerRole");
 		CommonUtil.isValidReference(referralRecipientReference,
 				"PractitionerRole");
+		CommonUtil.isValidReference(supportingInfo,
+				"Bundle");
 		
 		Identifier referralIntiatorTypeIdentifier = new Identifier();
 		referralIntiatorTypeIdentifier.setType(new CodeableConcept().addCoding(
@@ -59,22 +65,20 @@ public class BSERReferralTask extends Task{
 		super.addIdentifier(referralIntiatorTypeIdentifier);
 		super.addIdentifier(referralRecipentTypeIdentifier);
 		super.setStatus(status);
-		super.setBusinessStatus(businessStatus);
-		super.setFocus(serviceRequest);
-		super.setAuthoredOn(authoredOn);
+		super.setIntent(ServiceRequestIntent.ORDER);
+		super.setCode(code);
+		super.setSubject(subject);
+		super.setOccurrence(new DateTimeType(occurrence));
 		super.setRequester(referralInitiatorReference);
-		super.setOwner(referralRecipientReference);
+		super.addPerformer(referralRecipientReference);
+		super.addSupportingInfo(supportingInfo);
 		return this;
 	}
 	
-	public BSERReferralTask addOutput(Reference refferalFeedbackDocument) {
-		super.addOutput(new TaskOutputComponent()
-				.setValue(refferalFeedbackDocument));
-		return this;
-	}
 	
-	public BSERReferralTask addOutput(BSERReferralFeedbackDocument refferalFeedbackDocument) {
-		Reference reference = new Reference("Bundle/"+refferalFeedbackDocument.getId());
-		return this.addOutput(reference);
+	public BSERReferralServiceRequest addInsurance(BSERCoverage insurance) {
+		Reference reference = new Reference("Coverage/"+insurance.getId());
+		super.addInsurance(reference);
+		return this;
 	}
 }
