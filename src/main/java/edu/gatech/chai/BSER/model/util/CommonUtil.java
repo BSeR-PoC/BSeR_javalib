@@ -6,6 +6,10 @@ import java.util.Arrays;
 import java.util.UUID;
 
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.Coding;
+import org.hl7.fhir.r4.model.Composition;
+import org.hl7.fhir.r4.model.Composition.SectionComponent;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Resource;
@@ -13,8 +17,40 @@ import org.hl7.fhir.r4.model.Resource;
 public class CommonUtil {
 	public static String bserCodeSystemUrl = "http://hl7.org/fhir/us/bser/CodeSystem/bser";
 	
-	public Resource assignUUID(Resource resource) {
+	public static Resource assignUUID(Resource resource) {
 		return (Resource)resource.setId(new IdType(UUID.randomUUID().toString()));
+	}
+	
+	public static SectionComponent findSectionWithCode(Composition composition, CodeableConcept code) {
+		for(Coding coding:code.getCoding()) {
+			SectionComponent returnSection = findSectionWithCode(composition,coding);  
+			if(returnSection != null) {
+				return returnSection;
+			}
+		}
+		return null;
+	}
+	
+	public static SectionComponent findSectionWithCode(Composition composition, Coding coding) {
+		for(SectionComponent section: composition.getSection()) {
+			for(Coding sourceCoding:section.getCode().getCoding()) {
+				if(sourceCoding.equalsShallow(coding)) {
+					return section;
+				}
+			}
+		}
+		return null;
+	}
+	
+	public static SectionComponent findSectionWithCode(Composition composition, String code) {
+		for(SectionComponent section: composition.getSection()) {
+			for(Coding sourceCoding:section.getCode().getCoding()) {
+				if(sourceCoding.getCode().equalsIgnoreCase(code) || sourceCoding.getDisplay().equalsIgnoreCase(code)) {
+					return section;
+				}
+			}
+		}
+		return null;
 	}
 	
 	public static boolean isValidReference(Reference reference,String sourceType) {

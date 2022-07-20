@@ -52,4 +52,15 @@ public class BSERReferralFeedbackComposition extends Composition{
 		super.addSection(feedbackSupportInfoSection);
 		return this;
 	}
+	
+	public BSERReferralFeedbackComposition addSupportingInfo(Reference reference) {
+		CommonUtil.findSectionWithCode(this, BSERReferralFeedbackCompositionUtil.referralFeedbackSupportingInformationSectionCode)
+			.addEntry(reference);
+		return this;
+	}
+	
+	public BSERReferralFeedbackComposition addSupportingInfo(BSERSupportingInfoBundle bundle) {
+		Reference reference = new Reference("Bundle/"+bundle.getId());
+		return addSupportingInfo(reference);
+	}
 }

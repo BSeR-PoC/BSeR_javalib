@@ -12,4 +12,7 @@ public class BSERReferralRequestDocumentBundle extends Bundle{
 	 */
 	private static final long serialVersionUID = -1161543706572844707L;
 
+	public BSERReferralRequestDocumentBundle(BSERReferralFeedbackComposition composition) {
+		super.addEntry(new BundleEntryComponent().setResource(composition));
+	}
 }
