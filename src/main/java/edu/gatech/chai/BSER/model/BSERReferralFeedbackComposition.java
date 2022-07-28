@@ -31,13 +31,14 @@ public class BSERReferralFeedbackComposition extends Composition{
 	
 	private BSERReferralFeedbackComposition commonConstructor(Reference subject,
 			Date date, Reference author, String title, Reference serviceRequest,
-			Reference activityStatus) {
+			Reference activityStatus, Reference supportingInfo) {
 		
 		CommonUtil.isValidReference(subject, "Patient");
 		CommonUtil.isValidReference(author, "PractitionerRole");
 		CommonUtil.isValidReference(serviceRequest, "ServiceRequest");
 		CommonUtil.isValidReference(activityStatus, "Observation");
-		
+		CommonUtil.isValidReference(supportingInfo, "Bundle");
+
 		SectionComponent summarySection = new SectionComponent();
 		summarySection.setCode(BSERReferralFeedbackCompositionUtil.referralFeedbackRequestFeedbackSummarySectionCode);
 		summarySection.setFocus(serviceRequest);
@@ -45,8 +46,7 @@ public class BSERReferralFeedbackComposition extends Composition{
 		
 		SectionComponent feedbackSupportInfoSection = new SectionComponent();
 		feedbackSupportInfoSection.setCode(BSERReferralFeedbackCompositionUtil.referralFeedbackSupportingInformationSectionCode);
-		//TODO: Add supporting Information resources.
-//		feedbackSupportInfoSection.addEntry(activityStatus);
+		feedbackSupportInfoSection.addEntry(supportingInfo)
 		
 		super.addSection(summarySection);
 		super.addSection(feedbackSupportInfoSection);
@@ -59,7 +59,7 @@ public class BSERReferralFeedbackComposition extends Composition{
 		return this;
 	}
 	
-	public BSERReferralFeedbackComposition addSupportingInfo(BSERSupportingInfoBundle bundle) {
+	public BSERReferralFeedbackComposition addSupportingInfo(BSERSupportingInfoBundleAbstract bundle) {
 		Reference reference = new Reference("Bundle/"+bundle.getId());
 		return addSupportingInfo(reference);
 	}

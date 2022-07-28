@@ -44,7 +44,7 @@ public class BSERReferralRequestComposition extends Composition{
 		return this;
 	}
 	
-	public BSERReferralRequestComposition addSupportingInfo(BSERSupportingInfoBundle supportingInfo) {
+	public BSERReferralRequestComposition addSupportingInfo(BSERSupportingInfoBundleAbstract supportingInfo) {
 		Reference reference = new Reference("Bundle/"+supportingInfo.getId());
 		return addSupportingInfo(reference);
 	}

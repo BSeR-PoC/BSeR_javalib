@@ -11,7 +11,7 @@ import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.BSER.model.util.BSERReferralActivityStatusUtil;
 
 @ResourceDef(name = "Bundle", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ArthritisReferralFeedbackSupportingInformation")
-public class BSERArthritusReferralFeedbackSupportingInfo extends BSERSupportingInfoBundle{
+public class BSERArthritusReferralFeedbackSupportingInfo extends BSERSupportingInfoBundleAbstract{
 
 
 	/**
