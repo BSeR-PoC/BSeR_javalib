@@ -13,5 +13,4 @@ public class BSERParticipantFeedbackObservationUtil {
 			new CodeableConcept().addCoding(new Coding("http://snomed.info/sct","298057009","Number of appointments attended (observable entity)")),
 			new CodeableConcept().addCoding(new Coding("http://snomed.info/sct","298058004","Number of appointments missed (observable entity)")),
 			));
-	
 }

@@ -4,7 +4,7 @@ import org.hl7.fhir.r4.model.Observation;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 
-@ResourceDef(name = "Bundle", profile = "tp://hl7.org/fhir/us/bser/StructureDefinition/BSeR-DiabetesPreventionReferralFeedbackSupportingInformation")
+@ResourceDef(name = "Bundle", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-DiabetesPreventionReferralFeedbackSupportingInformation")
 public class BSERDiabetesPreventionReferralFeedbackSupportingInformation extends BSERSupportingInfoBundleAbstract{
 
     public BSERDiabetesPreventionReferralFeedbackSupportingInformation() {

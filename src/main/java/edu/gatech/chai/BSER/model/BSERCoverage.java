@@ -15,6 +15,10 @@ public class BSERCoverage extends Coverage{
 	 */
 	private static final long serialVersionUID = -3457938695594722128L;
 	
+	public BSERCoverage() {
+		super();
+	}
+
 	public BSERCoverage(CoverageStatus status, CodeableConcept type,
 			Reference subscriber, Reference beneficiary, Reference payor) {
 		super();

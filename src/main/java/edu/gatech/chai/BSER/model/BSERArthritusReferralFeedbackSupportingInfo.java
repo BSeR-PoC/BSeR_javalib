@@ -19,6 +19,10 @@ public class BSERArthritusReferralFeedbackSupportingInfo extends BSERSupportingI
 	 */
 	private static final long serialVersionUID = -4276118205934026310L;
 
+	public BSERArthritusReferralFeedbackSupportingInfo() {
+		super();
+	}
+
 	public BSERArthritusReferralFeedbackSupportingInfo(BSERArthritusFeedbackObservation	observation) {
 		super();
 		super.addEntry(new BundleEntryComponent().setResource(observation));

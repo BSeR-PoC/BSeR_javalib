@@ -24,9 +24,9 @@ public class BSERReferralFeedbackComposition extends Composition{
 	
 	public BSERReferralFeedbackComposition(Reference subject,
 			Date date, Reference author, String title, Reference serviceRequest,
-			Reference activityStatus) {
+			Reference activityStatus, Reference supportingInfo) {
 		super();
-		commonConstructor(subject,date,author,title,serviceRequest,activityStatus);
+		commonConstructor(subject,date,author,title,serviceRequest,activityStatus,supportingInfo);
 	}
 	
 	private BSERReferralFeedbackComposition commonConstructor(Reference subject,

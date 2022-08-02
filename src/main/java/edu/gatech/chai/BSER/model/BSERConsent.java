@@ -17,6 +17,10 @@ public class BSERConsent extends Consent{
 	 */
 	private static final long serialVersionUID = -2744782990117835263L;
 
+	public BSERConsent() {
+		super();
+	}
+
 	public BSERConsent(ConsentState status, CodeableConcept scope,
 			CodeableConcept category, Reference patient, Date dateTime,
 			Reference performer, ConsentProvisionType provisionType) {

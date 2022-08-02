@@ -1,5 +1,6 @@
 package edu.gatech.chai.FHIR.model;
 
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
 

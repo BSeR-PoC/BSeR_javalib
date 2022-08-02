@@ -18,6 +18,9 @@ public class BSERArthritusFeedbackObservation extends Observation{
 	 */
 	private static final long serialVersionUID = -2744782990117835263L;
 
+	public BSERArthritusFeedbackObservation() {
+		super();
+	}
 	public BSERArthritusFeedbackObservation(CodeableConcept code, Reference subject, boolean valueBoolean) {
 		super();
 		commonConstructor(code, subject, new BooleanType(valueBoolean));

@@ -12,7 +12,10 @@ public class BSEROrganization extends USCoreOrganization{
 	 * 
 	 */
 	private static final long serialVersionUID = -3292925445691732367L;
-
+	public BSEROrganization(){
+		super();
+	}
+	
 	public BSEROrganization(Identifier identifier, boolean active, String name) {
 		super(identifier, active, name);
 	}

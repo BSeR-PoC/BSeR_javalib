@@ -13,6 +13,9 @@ public class BSEREducationLevel extends Observation{
 	 * 
 	 */
 	private static final long serialVersionUID = 3521086429728477845L;
+	public BSEREducationLevel() {
+		super();
+	}
 	
 	public BSEREducationLevel(CodeableConcept value) {
 		super.setStatus(ObservationStatus.FINAL);

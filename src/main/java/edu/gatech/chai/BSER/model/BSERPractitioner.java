@@ -13,6 +13,10 @@ public class BSERPractitioner extends USCorePractitioner{
 	 * 
 	 */
 	private static final long serialVersionUID = -2550907218824359394L;
+	
+	public BSERPractitioner(){
+		super();
+	}
 
 	public BSERPractitioner(Identifier identifier, HumanName name) {
 		super(identifier, name);
