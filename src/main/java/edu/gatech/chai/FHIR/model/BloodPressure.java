@@ -6,6 +6,7 @@ import org.hl7.fhir.r4.model.Quantity;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.FHIR.model.util.BloodPressureUtil;
+import edu.gatech.chai.FHIR.model.util.BodyHeightUtil;
 import edu.gatech.chai.FHIR.model.util.CommonUtil;
 
 @ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/StructureDefinition/bp")
@@ -39,7 +40,7 @@ public class BloodPressure extends Observation{
                 throw new FHIRException("quantity requires a system url of: http://unitsofmeasure.org");
             }
             if(!BloodPressureUtil.valueCodes.contains(systolicBP.getCode())) {
-                throw new FHIRException("quantity code must be one of:"+String.join(",", BodyHeightUtil.valueCodes)+", found:"+quantity.getCode());
+                throw new FHIRException("quantity code must be one of:"+String.join(",", BodyHeightUtil.valueCodes)+", found:"+systolicBP.getCode());
             }
             systolicComponent.setValue(systolicBP);
         }
@@ -60,7 +61,7 @@ public class BloodPressure extends Observation{
                 throw new FHIRException("quantity requires a system url of: http://unitsofmeasure.org");
             }
             if(!BloodPressureUtil.valueCodes.contains(diastolicBP.getCode())) {
-                throw new FHIRException("quantity code must be one of:"+String.join(",", BodyHeightUtil.valueCodes)+", found:"+quantity.getCode());
+                throw new FHIRException("quantity code must be one of:"+String.join(",", BodyHeightUtil.valueCodes)+", found:"+diastolicBP.getCode());
             }
             systolicComponent.setValue(diastolicBP);
         }
