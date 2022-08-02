@@ -46,7 +46,7 @@ public class BSERReferralFeedbackComposition extends Composition{
 		
 		SectionComponent feedbackSupportInfoSection = new SectionComponent();
 		feedbackSupportInfoSection.setCode(BSERReferralFeedbackCompositionUtil.referralFeedbackSupportingInformationSectionCode);
-		feedbackSupportInfoSection.addEntry(supportingInfo)
+		feedbackSupportInfoSection.addEntry(supportingInfo);
 		
 		super.addSection(summarySection);
 		super.addSection(feedbackSupportInfoSection);
