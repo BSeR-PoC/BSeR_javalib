@@ -3,6 +3,7 @@ package edu.gatech.chai.BSER.model.util;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.UUID;
 
 import org.hl7.fhir.exceptions.FHIRException;
@@ -76,5 +77,15 @@ public class CommonUtil {
 			
 		}
 		return true;
+	}
+
+	public static CodeableConcept findConceptFromCollectionUsingSimpleString(String key,Collection<CodeableConcept> collection) {
+		for(CodeableConcept conceptIter:collection) {
+			for (Coding codingIter: conceptIter.getCoding())
+			if(codingIter.getCode().equalsIgnoreCase(key) || codingIter.getDisplay().equalsIgnoreCase(key)) {
+				return conceptIter;
+			}
+		}
+		return null;
 	}
 }
