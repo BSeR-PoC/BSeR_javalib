@@ -91,7 +91,7 @@
           <message>Maven artifacts for ${project.version}</message>
           <noJekyll>true</noJekyll>
           <outputDirectory>${project.build.directory}</outputDirectory>
-          <branch>refs/heads/master</branch>
+          <branch>refs/heads/mvnrepo</branch>
           <includes>
             <include>**/*</include>
           </includes>
