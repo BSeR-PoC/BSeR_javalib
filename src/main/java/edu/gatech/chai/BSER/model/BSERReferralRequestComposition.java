@@ -25,7 +25,7 @@ public class BSERReferralRequestComposition extends Composition{
 			Reference author, String title, Reference supportingInfo) {
 		CommonUtil.isValidReference(subject, "Patient");
 		CommonUtil.isValidReference(author, "PractitionerRole");
-		CommonUtil.isValidReference(author, "Bundle");
+		CommonUtil.isValidReference(supportingInfo, "Bundle");
 		super.setStatus(status);
 		super.setType(type);
 		super.setSubject(subject);
