@@ -20,9 +20,15 @@ public class BSERReferralRequestComposition extends Composition{
 	 */
 	private static final long serialVersionUID = -7888507606333842386L;
 
+	public BSERReferralRequestComposition() {
+		super();
+	}
+
 	public BSERReferralRequestComposition(CompositionStatus status,
 			CodeableConcept type,Reference subject, Date dateTime,
 			Reference author, String title, Reference supportingInfo) {
+		super();
+		
 		CommonUtil.isValidReference(subject, "Patient");
 		CommonUtil.isValidReference(author, "PractitionerRole");
 		CommonUtil.isValidReference(supportingInfo, "Bundle");

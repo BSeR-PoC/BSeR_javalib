@@ -16,6 +16,10 @@ import edu.gatech.chai.BSER.model.util.CommonUtil;
 
 @ResourceDef(name = "Task", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ReferralTask")
 public class BSERReferralTask extends Task{
+	public BSERReferralTask() {
+		super();
+	}
+	
 	public BSERReferralTask(String referralInitatorIdentifier,
 			String referralRecipientIdentifier, Reference organization,
 			TaskStatus status, CodeableConcept businessStatus,

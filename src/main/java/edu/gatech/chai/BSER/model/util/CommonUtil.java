@@ -62,7 +62,7 @@ public class CommonUtil {
 		}
 		String targetId = referenceComponents[referenceComponents.length - 1];
 		String targetType = referenceComponents[referenceComponents.length - 2];
-		if(targetType != sourceType) {
+		if(!targetType.equals(sourceType)) {
 			throw new FHIRException("Tried to create reference from the string '"+reference.getReference()+"'expected"
 					+ " a resource type of '"+sourceType+"' but instead found '"+targetType+"'.");
 		}

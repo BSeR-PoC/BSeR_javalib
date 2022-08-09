@@ -8,7 +8,6 @@ import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.codesystems.ObservationCategory;
-import org.hl7.fhir.r4.model.codesystems.ObservationCategoryEnumFactory;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 
@@ -26,7 +25,13 @@ public class ODHEmploymentStatus extends Observation{
 	 */
 	private static final long serialVersionUID = -4010359680028283864L;
 
+	public ODHEmploymentStatus() {
+		super();
+	}
+
 	public ODHEmploymentStatus(Reference subjectReference) {
+		super();
+		
 		CodeableConcept socialHistoryCC = new CodeableConcept(
 			new Coding(ObservationCategory.SOCIALHISTORY.getSystem(), ObservationCategory.SOCIALHISTORY.toCode(), ObservationCategory.SOCIALHISTORY.getDisplay())
 		);
