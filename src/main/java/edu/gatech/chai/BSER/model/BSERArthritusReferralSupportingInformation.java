@@ -12,6 +12,6 @@ public class BSERArthritusReferralSupportingInformation extends BSERSupportingIn
 
     public BSERArthritusReferralSupportingInformation(Resource entry){
         super();
-        super.addEntry(new BundleEntryComponent().setResource(entry));
+        super.addEntry(new BundleEntryComponent().setFullUrl(entry.getIdElement().toVersionless().getValue()).setResource(entry));
     }
 }

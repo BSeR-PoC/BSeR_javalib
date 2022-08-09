@@ -18,6 +18,6 @@ public class BSERReferralRequestDocumentBundle extends Bundle{
 
 	public BSERReferralRequestDocumentBundle(BSERReferralRequestComposition composition) {
 		super();
-		super.addEntry(new BundleEntryComponent().setResource(composition));
+		super.addEntry(new BundleEntryComponent().setFullUrl(composition.getIdElement().toVersionless().getValue()).setResource(composition));
 	}
 }

@@ -25,7 +25,7 @@ public class BSERArthritusReferralFeedbackSupportingInfo extends BSERSupportingI
 
 	public BSERArthritusReferralFeedbackSupportingInfo(BSERArthritusFeedbackObservation	observation) {
 		super();
-		super.addEntry(new BundleEntryComponent().setResource(observation));
+		super.addEntry(new BundleEntryComponent().setFullUrl(observation.getIdElement().toVersionless().getValue()).setResource(observation));
 	}
 	
 }

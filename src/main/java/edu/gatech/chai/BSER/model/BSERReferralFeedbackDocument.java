@@ -14,6 +14,6 @@ public class BSERReferralFeedbackDocument extends Bundle{
 	
 	public BSERReferralFeedbackDocument(BSERReferralFeedbackComposition composition) {
 		super();
-		this.addEntry(new BundleEntryComponent().setResource(composition));
+		this.addEntry(new BundleEntryComponent().setFullUrl(composition.getIdElement().toVersionless().getValue()).setResource(composition));
 	}
 }
