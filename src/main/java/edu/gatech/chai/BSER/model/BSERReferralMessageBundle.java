@@ -12,25 +12,29 @@ public class BSERReferralMessageBundle extends Bundle{
 	 */
 	private static final long serialVersionUID = -1239582961165743311L;
 
+	public BSERReferralMessageBundle() {
+		super();
+	}
+
 	public BSERReferralMessageBundle(BSERReferralMessageHeader header) {
 		super();
-		super.setType(BundleType.MESSAGE);
-		super.addEntry(new BundleEntryComponent().setResource(header));
+		this.setType(BundleType.MESSAGE);
+		this.addEntry(new BundleEntryComponent().setFullUrl(header.getIdElement().toVersionless().getValue()).setResource(header));
 	}
 	
 	public BSERReferralMessageBundle addEmploymentStatus(ODHEmploymentStatus employmentStatus) {
-		super.addEntry(new BundleEntryComponent().setResource(employmentStatus));
+		this.addEntry(new BundleEntryComponent().setFullUrl(employmentStatus.getIdElement().toVersionless().getValue()).setResource(employmentStatus));
 		return this;
 		
 	}
 	
 	public BSERReferralMessageBundle addPatientConsent(BSERConsent consent) {
-		super.addEntry(new BundleEntryComponent().setResource(consent));
+		this.addEntry(new BundleEntryComponent().setFullUrl(consent.getIdElement().toVersionless().getValue()).setResource(consent));
 		return this;
 	}
 	
 	public BSERReferralMessageBundle addEducationLevel(BSEREducationLevel educationLevel) {
-		super.addEntry(new BundleEntryComponent().setResource(educationLevel));
+		this.addEntry(new BundleEntryComponent().setFullUrl(educationLevel.getIdElement().toVersionless().getValue()).setResource(educationLevel));
 		return this;
 	}
 }
