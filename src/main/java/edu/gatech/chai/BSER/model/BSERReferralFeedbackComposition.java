@@ -21,6 +21,10 @@ public class BSERReferralFeedbackComposition extends Composition{
 	 * 
 	 */
 	private static final long serialVersionUID = 5596418485277827438L;
+
+	public BSERReferralFeedbackComposition() {
+		super();
+	}
 	
 	public BSERReferralFeedbackComposition(Reference subject,
 			Date date, Reference author, String title, Reference serviceRequest,

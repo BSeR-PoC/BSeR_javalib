@@ -14,6 +14,10 @@ public class BSERReferralInitiatorPractitionerRole extends PractitionerRole{
 	 */
 	private static final long serialVersionUID = -8021608999126593262L;
 	
+	public BSERReferralInitiatorPractitionerRole() {
+		super();
+	}
+	
 	public BSERReferralInitiatorPractitionerRole(Reference practitionerReference, Reference organizationReference) {
 		super();
 		commonConstructor(practitionerReference,organizationReference);

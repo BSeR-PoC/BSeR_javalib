@@ -18,6 +18,13 @@ import edu.gatech.chai.BSER.model.util.CommonUtil;
 
 @ResourceDef(name = "ServiceRequest", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ReferralServiceRequest")
 public class BSERReferralServiceRequest extends ServiceRequest{
+	
+	private static final long serialVersionUID = -1161543706572844708L;
+
+	public BSERReferralServiceRequest(){
+		super();
+	}
+
 	public BSERReferralServiceRequest(String referralInitatorIdentifier,
 			String referralRecipientIdentifier, Reference organization,
 			ServiceRequestStatus status, CodeableConcept code,

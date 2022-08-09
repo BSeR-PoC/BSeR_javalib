@@ -15,6 +15,10 @@ public class BSERReferralMessageHeader extends MessageHeader{
 	 */
 	private static final long serialVersionUID = -8031909274044886353L;
 
+	public BSERReferralMessageHeader(){
+		super();
+	}
+	
 	public BSERReferralMessageHeader(Reference receiver, Reference sender,
 			Reference focus) {
 		super();
