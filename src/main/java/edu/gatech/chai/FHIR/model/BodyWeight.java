@@ -1,15 +1,15 @@
 package edu.gatech.chai.FHIR.model;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.r4.model.DecimalType;
+import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.FHIR.model.util.BodyWeightUtil;
-import edu.gatech.chai.FHIR.model.util.BodyHeightUtil;
 import edu.gatech.chai.FHIR.model.util.CommonUtil;
 
 @ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/StructureDefinition/bodyweight")
@@ -20,13 +20,22 @@ public class BodyWeight extends Observation{
 	 */
 	private static final long serialVersionUID = 4970033045994485529L;
 
+	public BodyWeight() {
+		super();
+		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
+		super.setCode(BodyWeightUtil.code);
+	}
+
 	public BodyWeight(Quantity quantity) {
 		super();
+		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
 		commonConstructor(quantity);
 	}
 	
 	public BodyWeight(float value, String unitCode, String unitFullname) {
 		super();
+		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
+
 		Quantity quantity = new Quantity();
 		quantity.setValue(new BigDecimal(value));
 		quantity.setSystem(CommonUtil.ucumSystemUrl);
@@ -49,7 +58,7 @@ public class BodyWeight extends Observation{
 		if(quantity.getUnit() == null) {
 			throw new FHIRException("quantity requires a unit string");
 		}
-		if(quantity.getSystem() != CommonUtil.ucumSystemUrl) {
+		if(!CommonUtil.ucumSystemUrl.equals(quantity.getSystem())) {
 			throw new FHIRException("quantity requires a system url of: http://unitsofmeasure.org");
 		}
 		if(!BodyWeightUtil.valueCodes.contains(quantity.getCode())) {

@@ -33,8 +33,4 @@ public class BSERReferralMessageHeader extends MessageHeader{
 		super.setSender(sender);
 		super.addFocus(focus);
 	}
-
-	public BSERReferralMessageHeader() {
-		super();
-	}
 }
