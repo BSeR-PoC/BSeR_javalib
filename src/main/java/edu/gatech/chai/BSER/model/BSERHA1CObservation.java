@@ -11,9 +11,11 @@ public class BSERHA1CObservation extends Observation{
 
     public BSERHA1CObservation() {
         super();
+        super.setStatus(ObservationStatus.FINAL);
     }
     
     public BSERHA1CObservation(CodeableConcept code, Quantity quantity){
+        super();
         super.setStatus(ObservationStatus.FINAL);
         super.setCode(code);
         super.setValue(quantity);
