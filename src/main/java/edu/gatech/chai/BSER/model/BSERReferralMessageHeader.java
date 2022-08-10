@@ -18,7 +18,7 @@ public class BSERReferralMessageHeader extends MessageHeader{
 	public BSERReferralMessageHeader(){
 		super();
 	}
-	
+
 	public BSERReferralMessageHeader(Reference receiver, Reference sender,
 			Reference focus) {
 		super();
@@ -34,7 +34,4 @@ public class BSERReferralMessageHeader extends MessageHeader{
 		super.addFocus(focus);
 	}
 
-	public BSERReferralMessageHeader() {
-		super();
-	}
 }
