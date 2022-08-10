@@ -11,7 +11,7 @@ public class BSERDiabetesPreventionReferralSupportingInformation extends BSERSup
         super();
     }
 
-    public BSERDiabetesPreventionReferralSupportingInformation(Observation entry) {
-        super.addEntry(new BundleEntryComponent().setResource(entry));
+    public BSERDiabetesPreventionReferralSupportingInformation(Observation observation) {
+        super.addEntry(new BundleEntryComponent().setFullUrl(observation.getIdElement().toVersionless().getValue()).setResource(observation));
     }
 }

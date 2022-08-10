@@ -13,6 +13,9 @@ import edu.gatech.chai.BSER.model.util.BSERReferralActivityStatusUtil;
 @ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ReferralActivityStatus")
 public class BSERReferralActivityStatus extends Observation{
 
+	public BSERReferralActivityStatus() {
+		super();
+	}
 
 	public BSERReferralActivityStatus(Date dateTime,String value) {
 		super();

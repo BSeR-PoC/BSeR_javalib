@@ -12,8 +12,12 @@ public class BSERReferralFeedbackDocument extends Bundle{
 	 */
 	private static final long serialVersionUID = 5596418485277827438L;
 	
+	public BSERReferralFeedbackDocument() {
+		super();
+	}
+	
 	public BSERReferralFeedbackDocument(BSERReferralFeedbackComposition composition) {
 		super();
-		this.addEntry(new BundleEntryComponent().setResource(composition));
+		this.addEntry(new BundleEntryComponent().setFullUrl(composition.getIdElement().toVersionless().getValue()).setResource(composition));
 	}
 }

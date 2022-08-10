@@ -11,7 +11,7 @@ public class BSERDiabetesPreventionReferralFeedbackSupportingInformation extends
         super();
     }
 
-    public BSERDiabetesPreventionReferralFeedbackSupportingInformation(Observation entry) {
-        super.addEntry(new BundleEntryComponent().setResource(entry));
+    public BSERDiabetesPreventionReferralFeedbackSupportingInformation(Observation observation) {
+        super.addEntry(new BundleEntryComponent().setFullUrl(observation.getIdElement().toVersionless().getValue()).setResource(observation));
     }
 }

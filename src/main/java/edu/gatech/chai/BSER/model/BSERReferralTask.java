@@ -16,6 +16,9 @@ import edu.gatech.chai.BSER.model.util.CommonUtil;
 
 @ResourceDef(name = "Task", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ReferralTask")
 public class BSERReferralTask extends Task{
+
+	private static final long serialVersionUID = -1161543706572844709L;
+
 	public BSERReferralTask() {
 		super();
 	}
