@@ -37,8 +37,8 @@ public class BSERReferralTask extends Task{
 	}
 	
 	private BSERReferralTask commonConstructor(String referralInitatorIdentifier,
-			String referralRecipientIdentifier, Reference FILLorganization,
-			Reference PLACorganization, TaskStatus status, CodeableConcept businessStatus,
+			String referralRecipientIdentifier, Reference PLACorganization,
+			Reference FILLorganization, TaskStatus status, CodeableConcept businessStatus,
 			Reference serviceRequest, Date authoredOn,
 			Reference referralInitiatorReference,
 			Reference referralRecipientReference) {
