@@ -4,14 +4,12 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.r4.model.DecimalType;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.FHIR.model.util.BMIUtil;
-import edu.gatech.chai.FHIR.model.util.BodyHeightUtil;
 import edu.gatech.chai.FHIR.model.util.CommonUtil;
 
 @ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/StructureDefinition/bmi")

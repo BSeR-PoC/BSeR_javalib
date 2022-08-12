@@ -4,7 +4,7 @@ import org.hl7.fhir.r4.model.Resource;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 
-@ResourceDef(name = "Bundle", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ArthritisReferralFeedbackSupportingInformation")
+@ResourceDef(name = "Bundle", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ArthritisReferralSupportingInformation")
 public class BSERArthritusReferralSupportingInformation extends BSERSupportingInfoBundleAbstract {
     public BSERArthritusReferralSupportingInformation() {
         super();

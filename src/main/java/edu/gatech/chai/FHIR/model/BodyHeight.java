@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.r4.model.DecimalType;
 import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
