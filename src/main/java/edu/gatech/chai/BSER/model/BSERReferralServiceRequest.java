@@ -1,12 +1,14 @@
 package edu.gatech.chai.BSER.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hl7.fhir.r4.model.CodeType;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Identifier;
+import org.hl7.fhir.r4.model.PractitionerRole;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.ServiceRequest;
 import org.hl7.fhir.r4.model.ServiceRequest.ServiceRequestStatus;
@@ -82,10 +84,40 @@ public class BSERReferralServiceRequest extends ServiceRequest{
 		return this;
 	}
 	
-	
 	public BSERReferralServiceRequest addInsurance(BSERCoverage insurance) {
 		Reference reference = new Reference("Coverage/"+insurance.getId());
 		super.addInsurance(reference);
 		return this;
+	}
+
+	public List<Identifier> addIdentifiers(PractitionerRole initiator, PractitionerRole recipient) {
+		Identifier referralIntiatorTypeIdentifier = new Identifier();
+		referralIntiatorTypeIdentifier.setType(new CodeableConcept().addCoding(
+				new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
+						BSERReferralTaskUtil.refferalIntitatorType,"")));
+		
+		Identifier initiatorIdentifier = initiator.getIdentifierFirstRep();
+		if (initiatorIdentifier != null && !initiatorIdentifier.isEmpty()) {
+			referralIntiatorTypeIdentifier.setValue(initiatorIdentifier.getValue());
+			referralIntiatorTypeIdentifier.setSystem(initiatorIdentifier.getSystem());
+		}
+		referralIntiatorTypeIdentifier.setAssigner(initiator.getOrganization());
+		
+		Identifier referralRecipentTypeIdentifier = new Identifier();
+		referralRecipentTypeIdentifier.setType(new CodeableConcept().addCoding(
+				new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
+						BSERReferralTaskUtil.refferalRecipientType,"")));
+
+		Identifier recipientIdentifier = recipient.getIdentifierFirstRep();
+		if (recipientIdentifier != null && !recipientIdentifier.isEmpty()) {
+			referralRecipentTypeIdentifier.setValue(recipientIdentifier.getValue());
+			referralRecipentTypeIdentifier.setSystem(recipientIdentifier.getSystem());
+		}
+		referralRecipentTypeIdentifier.setAssigner(recipient.getOrganization());
+
+		super.addIdentifier(initiatorIdentifier);
+		super.addIdentifier(recipientIdentifier);
+
+		return this.getIdentifier();
 	}
 }

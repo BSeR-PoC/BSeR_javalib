@@ -43,33 +43,31 @@ public class BSERReferralTask extends Task{
 			Reference referralInitiatorReference,
 			Reference referralRecipientReference) {
 		CommonUtil.isValidReference(serviceRequest, "ServiceRequest");
-		CommonUtil.isValidReference(PLACorganization, "Organization");
-		if(FILLorganization != null){
-			CommonUtil.isValidReference(FILLorganization, "Organization");
+		if(PLACorganization != null){
+			CommonUtil.isValidReference(PLACorganization, "Organization");
 		}
-		CommonUtil.isValidReference(referralInitiatorReference,
-				"PractitionerRole");
-		CommonUtil.isValidReference(referralRecipientReference,
-				"PractitionerRole");
+		CommonUtil.isValidReference(FILLorganization, "Organization");
+		CommonUtil.isValidReference(referralInitiatorReference, "PractitionerRole");
+		CommonUtil.isValidReference(referralRecipientReference, "PractitionerRole");
 		
+		Identifier referralIntiatorTypeIdentifier = new Identifier();
+		referralIntiatorTypeIdentifier.setType(new CodeableConcept().addCoding(
+			new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
+					BSERReferralTaskUtil.refferalIntitatorType,"")));
+		referralIntiatorTypeIdentifier.setValue(referralInitatorIdentifier);
+		referralIntiatorTypeIdentifier.setAssigner(PLACorganization);
+		super.addIdentifier(referralIntiatorTypeIdentifier);
+	
+		//NOTE: FILLOrginzation may not be required, but PLACOrganization is
 		Identifier referralRecipentTypeIdentifier = new Identifier();
 		referralRecipentTypeIdentifier.setType(new CodeableConcept().addCoding(
-				new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
-					BSERReferralTaskUtil.refferalRecipientType,"")));
-		referralRecipentTypeIdentifier.setValue(referralInitatorIdentifier);
-		referralRecipentTypeIdentifier.setAssigner(PLACorganization);
-		super.addIdentifier(referralRecipentTypeIdentifier);
-
-		//NOTE: FILLOrginzation may not be required, but PLACOrganization is
+			new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
+				BSERReferralTaskUtil.refferalRecipientType,"")));
+		referralRecipentTypeIdentifier.setValue(referralRecipientIdentifier);
 		if(FILLorganization != null){
-			Identifier referralIntiatorTypeIdentifier = new Identifier();
-			referralIntiatorTypeIdentifier.setType(new CodeableConcept().addCoding(
-					new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
-							BSERReferralTaskUtil.refferalIntitatorType,"")));
-			referralIntiatorTypeIdentifier.setValue(referralInitatorIdentifier);
-			referralIntiatorTypeIdentifier.setAssigner(FILLorganization);
-			super.addIdentifier(referralIntiatorTypeIdentifier);
+			referralRecipentTypeIdentifier.setAssigner(FILLorganization);
 		}
+		super.addIdentifier(referralRecipentTypeIdentifier);
 
 		super.setStatus(status);
 		super.setBusinessStatus(businessStatus);

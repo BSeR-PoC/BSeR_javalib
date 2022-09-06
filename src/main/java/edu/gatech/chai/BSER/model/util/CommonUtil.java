@@ -55,28 +55,33 @@ public class CommonUtil {
 	}
 	
 	public static boolean isValidReference(Reference reference,String sourceType) {
-		String[] referenceComponents = reference.getReference().split("/");
-		if(referenceComponents.length < 2) {
-			throw new FHIRException("Tried to create reference from the string '"+reference.getReference()+"'but did not find"
-					+ " any forward slashes.");
+		if (sourceType.equals(reference.getReferenceElement().getResourceType())) {
+			return true;
+		} else {
+			throw new FHIRException("Tried to create reference '"+reference.getReference()+"', which is not" + sourceType);
 		}
-		String targetId = referenceComponents[referenceComponents.length - 1];
-		String targetType = referenceComponents[referenceComponents.length - 2];
-		if(!targetType.equals(sourceType)) {
-			throw new FHIRException("Tried to create reference from the string '"+reference.getReference()+"'expected"
-					+ " a resource type of '"+sourceType+"' but instead found '"+targetType+"'.");
-		}
-		if(referenceComponents.length > 2) {
-			String[] urlComponents = Arrays.copyOfRange(referenceComponents, 0, referenceComponents.length - 2);
-			String urlFull = String.join("", urlComponents);
-			try {
-				URL url = new URL(urlFull);
-			} catch (MalformedURLException e) {
-				throw new FHIRException("Validating Base Url of reference and found issue.", e);
-			}
+		// String[] referenceComponents = reference.getReference().split("/");
+		// if(referenceComponents.length < 2) {
+		// 	throw new FHIRException("Tried to create reference from the string '"+reference.getReference()+"'but did not find"
+		// 			+ " any forward slashes.");
+		// }
+		// String targetId = referenceComponents[referenceComponents.length - 1];
+		// String targetType = referenceComponents[referenceComponents.length - 2];
+		// if(!targetType.equals(sourceType)) {
+		// 	throw new FHIRException("Tried to create reference from the string '"+reference.getReference()+"'expected"
+		// 			+ " a resource type of '"+sourceType+"' but instead found '"+targetType+"'.");
+		// }
+		// if(referenceComponents.length > 2) {
+		// 	String[] urlComponents = Arrays.copyOfRange(referenceComponents, 0, referenceComponents.length - 2);
+		// 	String urlFull = String.join("", urlComponents);
+		// 	try {
+		// 		URL url = new URL(urlFull);
+		// 	} catch (MalformedURLException e) {
+		// 		throw new FHIRException("Validating Base Url of reference and found issue.", e);
+		// 	}
 			
-		}
-		return true;
+		// }
+		// return true;
 	}
 
 	public static CodeableConcept findConceptFromCollectionUsingSimpleString(String key,Collection<CodeableConcept> collection) {
