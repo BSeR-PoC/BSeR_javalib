@@ -15,7 +15,7 @@ public class BloodPressureUtil {
                             new Coding("http://loinc.org","8480-6","Systolic Blood Pressure"));
     public static CodeableConcept diastolicBPComponentCode = 
                             new CodeableConcept().addCoding(
-                                    new Coding("http://loinc.org","8462-4","Systolic Blood Pressure"));
+                                    new Coding("http://loinc.org","8462-4","Diastolic blood pressure"));
 	public static List<String> valueCodes = 
 			Arrays.asList(new String[]{"mm[Hg]"});
 }
