@@ -58,7 +58,7 @@ public class CommonUtil {
 		if (sourceType.equals(reference.getReferenceElement().getResourceType())) {
 			return true;
 		} else {
-			throw new FHIRException("Tried to create reference '"+reference.getReference()+"', which is not" + sourceType);
+			throw new FHIRException("Tried to create reference '"+reference.getReference()+"', which is not " + sourceType);
 		}
 		// String[] referenceComponents = reference.getReference().split("/");
 		// if(referenceComponents.length < 2) {
