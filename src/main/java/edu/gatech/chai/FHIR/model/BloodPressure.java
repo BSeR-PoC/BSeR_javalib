@@ -1,11 +1,11 @@
 package edu.gatech.chai.FHIR.model;
 
-import java.util.UUID;
+import java.util.Date;
 
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
 
@@ -18,14 +18,16 @@ import edu.gatech.chai.FHIR.model.util.CommonUtil;
 public class BloodPressure extends Observation{
     public BloodPressure(){
         super();
-        super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
         super.setCode(BloodPressureUtil.code);
+        super.addCategory(CommonUtil.getVitalSignsCategory());
     }
 
     public BloodPressure(Quantity systolicBP, Quantity diastolicBP) {
         super();
-		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
         super.setCode(BloodPressureUtil.code);
+        super.addCategory(CommonUtil.getVitalSignsCategory());
+        super.setEffective(new DateTimeType(new Date()));
+
         ObservationComponentComponent systolicComponent = new ObservationComponentComponent();
         systolicComponent.setCode(BloodPressureUtil.systolicBPComponentCode);
         ObservationComponentComponent diastolicComponent = new ObservationComponentComponent();

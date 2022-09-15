@@ -14,10 +14,12 @@ public class BSERReferralRequestDocumentBundle extends Bundle{
 
 	public BSERReferralRequestDocumentBundle() {
 		super();
+		super.setType(BundleType.DOCUMENT);
 	}
 
 	public BSERReferralRequestDocumentBundle(BSERReferralRequestComposition composition) {
 		super();
+		super.setType(BundleType.DOCUMENT);
 		super.addEntry(new BundleEntryComponent().setFullUrl(composition.getIdElement().toVersionless().getValue()).setResource(composition));
 	}
 }

@@ -20,4 +20,7 @@ public class BSEROrganization extends USCoreOrganization{
 		super(identifier, active, name);
 	}
 
+	public BSEROrganization(boolean active, String name) {
+		super(active, name);
+	}
 }

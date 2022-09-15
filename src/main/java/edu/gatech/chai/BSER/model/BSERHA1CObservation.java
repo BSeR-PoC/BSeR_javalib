@@ -1,6 +1,7 @@
 package edu.gatech.chai.BSER.model;
 
 import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
 
@@ -12,6 +13,7 @@ public class BSERHA1CObservation extends Observation{
     public BSERHA1CObservation() {
         super();
         super.setStatus(ObservationStatus.FINAL);
+        super.addCategory(new CodeableConcept(new Coding("http://terminology.hl7.org/CodeSystem/observation-category", "laboratory", null)));
     }
     
     public BSERHA1CObservation(CodeableConcept code, Quantity quantity){

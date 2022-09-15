@@ -40,11 +40,8 @@ public class ODHEmploymentStatus extends Observation{
 			new Coding("http://loinc.org", "74165-2", "History of employment status NIOSH")
 		);
 
-		List<CodeableConcept> observationCategories = new ArrayList<CodeableConcept>();
-		observationCategories.add(socialHistoryCC);
-		observationCategories.add(nioshHistoryEmpCC);
-
-		this.setCategory(observationCategories);
+		this.addCategory(socialHistoryCC);
+		this.setCode(nioshHistoryEmpCC);
 		this.setSubject(subjectReference);
 	}
 }

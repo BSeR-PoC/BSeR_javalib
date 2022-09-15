@@ -93,4 +93,12 @@ public class CommonUtil {
 		}
 		return null;
 	}
+
+	public static CodeableConcept initiatorIdentifierType() {
+		return new CodeableConcept(new Coding("http://terminology.hl7.org/CodeSystem/v2-0203", "PLAC", null));
+	}
+
+	public static CodeableConcept recipientIdentifierType() {
+		return new CodeableConcept(new Coding("http://terminology.hl7.org/CodeSystem/v2-0203", "FILL", null));
+	}
 }

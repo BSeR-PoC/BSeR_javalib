@@ -53,7 +53,7 @@ public class BSERReferralTask extends Task{
 		Identifier referralIntiatorTypeIdentifier = new Identifier();
 		referralIntiatorTypeIdentifier.setType(new CodeableConcept().addCoding(
 			new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
-					BSERReferralTaskUtil.refferalIntitatorType,"")));
+					BSERReferralTaskUtil.referralIntitatorType,"")));
 		referralIntiatorTypeIdentifier.setValue(referralInitatorIdentifier);
 		referralIntiatorTypeIdentifier.setAssigner(PLACorganization);
 		super.addIdentifier(referralIntiatorTypeIdentifier);
@@ -62,7 +62,7 @@ public class BSERReferralTask extends Task{
 		Identifier referralRecipentTypeIdentifier = new Identifier();
 		referralRecipentTypeIdentifier.setType(new CodeableConcept().addCoding(
 			new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
-				BSERReferralTaskUtil.refferalRecipientType,"")));
+				BSERReferralTaskUtil.referralRecipientType,"")));
 		referralRecipentTypeIdentifier.setValue(referralRecipientIdentifier);
 		if(FILLorganization != null){
 			referralRecipentTypeIdentifier.setAssigner(FILLorganization);

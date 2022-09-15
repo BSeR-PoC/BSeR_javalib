@@ -1,10 +1,10 @@
 package edu.gatech.chai.FHIR.model;
 
 import java.math.BigDecimal;
-import java.util.UUID;
+import java.util.Date;
 
 import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
 
@@ -22,30 +22,28 @@ public class BodyWeight extends Observation{
 
 	public BodyWeight() {
 		super();
-		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
 		super.setCode(BodyWeightUtil.code);
 	}
 
 	public BodyWeight(Quantity quantity) {
 		super();
-		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
 		commonConstructor(quantity);
 	}
 	
 	public BodyWeight(float value, String unitCode, String unitFullname) {
 		super();
-		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
-
 		Quantity quantity = new Quantity();
 		quantity.setValue(new BigDecimal(value));
 		quantity.setSystem(CommonUtil.ucumSystemUrl);
-		quantity.setCode(unitCode);
 		quantity.setUnit(unitFullname);
 		commonConstructor(quantity);
 	}
 	
 	public BodyWeight commonConstructor(Quantity quantity) {
 		super.setCode(BodyWeightUtil.code);
+		super.addCategory(CommonUtil.getVitalSignsCategory());
+        super.setEffective(new DateTimeType(new Date()));
+
 		if(quantity.getValue() == null) {
 			throw new FHIRException("quantity requires a value");
 		}

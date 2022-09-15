@@ -9,8 +9,8 @@ import org.hl7.fhir.r4.model.Coding;
 
 public class BSERReferralTaskUtil {
 	public static String taskIdentifierTypesSystemUrl = "http://terminology.hl7.org/CodeSystem/v2-0203";
-	public static String refferalIntitatorType = "PLAC";
-	public static String refferalRecipientType = "FILL";
+	public static String referralIntitatorType = "PLAC";
+	public static String referralRecipientType = "FILL";
 	
 	public static List<CodeableConcept> businessStatusVS = new ArrayList<CodeableConcept>(Arrays.asList(
 			new CodeableConcept().addCoding(new Coding("http://hl7.org/fhir/us/bser/CodeSystem/TaskBusinessStatusCS","2.0","Service Request Created")),

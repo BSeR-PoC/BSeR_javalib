@@ -1,10 +1,10 @@
 package edu.gatech.chai.FHIR.model;
 
 import java.math.BigDecimal;
-import java.util.UUID;
+import java.util.Date;
 
 import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.r4.model.IdType;
+import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
 
@@ -22,19 +22,18 @@ public class BMI extends Observation{
 
 	public BMI() {
 		super();
-		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
 		super.setCode(BMIUtil.code);
+		super.addCategory(CommonUtil.getVitalSignsCategory());
 	}
 
 	public BMI(Quantity quantity) {
 		super();
-		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
+
 		commonConstructor(quantity);
 	}
 	
 	public BMI(float value) {
 		super();
-		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
 
 		Quantity quantity = new Quantity();
 		quantity.setValue(new BigDecimal(value));
@@ -46,7 +45,6 @@ public class BMI extends Observation{
 	
 	public BMI(float value, String unitCode, String unitFullname) {
 		super();
-		super.setId(new IdType(fhirType(), UUID.randomUUID().toString()));
 
 		Quantity quantity = new Quantity();
 		quantity.setValue(new BigDecimal(value));
@@ -58,6 +56,9 @@ public class BMI extends Observation{
 	
 	public BMI commonConstructor(Quantity quantity) {
 		super.setCode(BMIUtil.code);
+		super.addCategory(CommonUtil.getVitalSignsCategory());
+        super.setEffective(new DateTimeType(new Date()));
+
 		if(quantity.getValue() == null) {
 			throw new FHIRException("quantity requires a value");
 		}
