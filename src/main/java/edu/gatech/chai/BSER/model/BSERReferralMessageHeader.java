@@ -46,4 +46,8 @@ public class BSERReferralMessageHeader extends MessageHeader{
 		super.setSender(sender);
 		super.addFocus(focus);
 	}
+
+	public static boolean isBSERReferralMessageHeader(BSERReferralMessageHeader bserReferralMessageHeader) {
+		return BSERReferralMessageHeaderUtil.eventCoding.equalsShallow(bserReferralMessageHeader.getEventCoding());
+	}
 }
