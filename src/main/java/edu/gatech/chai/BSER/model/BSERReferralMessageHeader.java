@@ -1,11 +1,8 @@
 package edu.gatech.chai.BSER.model;
 
-import javax.mail.Message;
-
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.r4.model.MessageHeader;
 import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.UriType;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.BSER.model.util.BSERReferralMessageHeaderUtil;

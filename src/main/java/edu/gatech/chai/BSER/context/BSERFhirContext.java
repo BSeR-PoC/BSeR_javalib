@@ -3,7 +3,6 @@ package edu.gatech.chai.BSER.context;
 import java.util.HashMap;
 
 import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.model.dstu2.resource.MessageHeader;
 import edu.gatech.chai.BSER.model.BSERArthritusFeedbackObservation;
 import edu.gatech.chai.BSER.model.BSERArthritusReferralFeedbackSupportingInfo;
 import edu.gatech.chai.BSER.model.BSERConsent;
@@ -43,7 +42,6 @@ public class BSERFhirContext extends FhirContext{
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ArthritusFeedbackSupportingInfo", BSERArthritusReferralFeedbackSupportingInfo.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-Consent", BSERConsent.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-Coverage", BSERCoverage.class);
-		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-DiabetesPreventionReferralFeedbackSupportingInformation", BSERDiabetesPreventionReferralFeedbackSupportingInformation.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-DiabetesPreventionReferralFeedbackSupportingInformation", BSERDiabetesPreventionReferralFeedbackSupportingInformation.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-EducationLevel", BSEREducationLevel.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-HA1CObservation", BSERHA1CObservation.class);
