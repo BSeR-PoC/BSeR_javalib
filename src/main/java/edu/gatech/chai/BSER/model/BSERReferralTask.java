@@ -2,16 +2,12 @@ package edu.gatech.chai.BSER.model;
 
 import java.util.Date;
 
-import org.hl7.fhir.r4.model.CodeType;
 import org.hl7.fhir.r4.model.CodeableConcept;
-import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.Task;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import edu.gatech.chai.BSER.model.util.BSERReferralTaskUtil;
 import edu.gatech.chai.BSER.model.util.CommonUtil;
 
 @ResourceDef(name = "Task", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ReferralTask")
@@ -53,25 +49,23 @@ public class BSERReferralTask extends Task{
 		CommonUtil.isValidReference(referralRecipientReference, "PractitionerRole");
 		
 		Identifier referralIntiatorTypeIdentifier = new Identifier();
-		referralIntiatorTypeIdentifier.setType(new CodeableConcept().addCoding(
-			new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
-					BSERReferralTaskUtil.referralIntitatorType,"")));
+		referralIntiatorTypeIdentifier.setType(CommonUtil.initiatorIdentifierType());
 		referralIntiatorTypeIdentifier.setSystem(initatorIdentifierSystem);
 		referralIntiatorTypeIdentifier.setValue(initatorIdentifierValue);
-		referralIntiatorTypeIdentifier.setAssigner(PLACorganization);
+		if (PLACorganization != null && !PLACorganization.isEmpty()) {
+			referralIntiatorTypeIdentifier.setAssigner(PLACorganization);
+		}
 		super.addIdentifier(referralIntiatorTypeIdentifier);
 	
-		//NOTE: FILLOrginzation may not be required, but PLACOrganization is
-		Identifier referralRecipientTypeIdentifier = new Identifier();
-		referralRecipientTypeIdentifier.setType(new CodeableConcept().addCoding(
-			new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
-				BSERReferralTaskUtil.referralRecipientType,"")));
-		referralRecipientTypeIdentifier.setSystem(recipientIdentifierSystem);
-		referralRecipientTypeIdentifier.setValue(recipientIdentifierValue);
-		if(FILLorganization != null){
+		//NOTE: FILLOrginzation may not be required.
+		if (recipientIdentifierValue != null && !recipientIdentifierValue.isEmpty()) {
+			Identifier referralRecipientTypeIdentifier = new Identifier();
+			referralRecipientTypeIdentifier.setType(CommonUtil.recipientIdentifierType());
+			referralRecipientTypeIdentifier.setSystem(recipientIdentifierSystem);
+			referralRecipientTypeIdentifier.setValue(recipientIdentifierValue);
 			referralRecipientTypeIdentifier.setAssigner(FILLorganization);
+			super.addIdentifier(referralRecipientTypeIdentifier);
 		}
-		super.addIdentifier(referralRecipientTypeIdentifier);
 
 		super.setStatus(status);
 		super.setBusinessStatus(businessStatus);

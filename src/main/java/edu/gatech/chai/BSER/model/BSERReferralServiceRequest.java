@@ -7,9 +7,9 @@ import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Identifier;
-import org.hl7.fhir.r4.model.PractitionerRole;
 import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.ServiceRequest;
+import org.hl7.fhir.validation.cli.utils.Common;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.BSER.model.util.BSERReferralTaskUtil;
@@ -23,6 +23,7 @@ public class BSERReferralServiceRequest extends ServiceRequest{
 	public BSERReferralServiceRequest(){
 		super();
 	}
+
 
 	public BSERReferralServiceRequest(String referralInitatorIdentifier,
 			String referralRecipientIdentifier, Reference initiatorOrganization, Reference recipientOrganization,
@@ -38,8 +39,8 @@ public class BSERReferralServiceRequest extends ServiceRequest{
 				referralRecipientReference, supportingInfo);
 	}
 	
-	private BSERReferralServiceRequest commonConstructor(String referralInitatorIdentifier,
-			String referralRecipientIdentifier, Reference initiatorOrganization, Reference recipientOrganization,
+	private BSERReferralServiceRequest commonConstructor(String referralInitatorIdentifierValue,
+			String referralRecipientIdentifierValue, Reference initiatorOrganization, Reference recipientOrganization,
 			ServiceRequestStatus status, CodeableConcept code,
 			Reference subject, Date occurrence,
 			Reference referralInitiatorReference,
@@ -62,18 +63,14 @@ public class BSERReferralServiceRequest extends ServiceRequest{
 				"Bundle");
 		
 		Identifier referralIntiatorTypeIdentifier = new Identifier();
-		referralIntiatorTypeIdentifier.setType(new CodeableConcept().addCoding(
-				new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
-						BSERReferralTaskUtil.referralIntitatorType,"")));
-		referralIntiatorTypeIdentifier.setValue(referralInitatorIdentifier);
+		referralIntiatorTypeIdentifier.setType(CommonUtil.initiatorIdentifierType());
+		referralIntiatorTypeIdentifier.setValue(referralInitatorIdentifierValue);
 		referralIntiatorTypeIdentifier.setAssigner(initiatorOrganization);
 		
 		if (referralRecipientReference != null && !referralRecipientReference.isEmpty()) {
 			Identifier referralRecipentTypeIdentifier = new Identifier();
-			referralRecipentTypeIdentifier.setType(new CodeableConcept().addCoding(
-				new Coding(BSERReferralTaskUtil.taskIdentifierTypesSystemUrl,
-					BSERReferralTaskUtil.referralRecipientType,"")));
-			referralRecipentTypeIdentifier.setValue(referralRecipientIdentifier);
+			referralRecipentTypeIdentifier.setType(CommonUtil.recipientIdentifierType());
+			referralRecipentTypeIdentifier.setValue(referralRecipientIdentifierValue);
 			referralRecipentTypeIdentifier.setAssigner(recipientOrganization);
 			super.addIdentifier(referralRecipentTypeIdentifier);
 		}
@@ -86,7 +83,11 @@ public class BSERReferralServiceRequest extends ServiceRequest{
 		super.setOccurrence(new DateTimeType(occurrence));
 		super.setRequester(referralInitiatorReference);
 		super.addPerformer(referralRecipientReference);
-		super.addSupportingInfo(supportingInfo);
+
+		if (supportingInfo != null && !supportingInfo.isEmpty()) {
+			super.addSupportingInfo(supportingInfo);
+		}
+		
 		return this;
 	}
 	
