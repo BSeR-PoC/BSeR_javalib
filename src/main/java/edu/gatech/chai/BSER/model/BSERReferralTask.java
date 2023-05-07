@@ -23,13 +23,13 @@ public class BSERReferralTask extends Task{
 			String recipientIdentifierSystem, String recipientIdentifierValue, 
 			Reference PLACorganization, Reference FILLOrganization,
 			TaskStatus status, CodeableConcept businessStatus,
-			Reference serviceRequest, Date authoredOn,
+			Reference serviceRequest, Reference patient, Date authoredOn,
 			Reference referralInitiatorReference,
 			Reference referralRecipientReference) {
 		super();
 		commonConstructor(initatorIdentifierSystem, initatorIdentifierValue,
 			recipientIdentifierSystem, recipientIdentifierValue, PLACorganization, 
-			FILLOrganization, status, businessStatus, serviceRequest, authoredOn, 
+			FILLOrganization, status, businessStatus, serviceRequest, patient, authoredOn, 
 			referralInitiatorReference, referralRecipientReference);
 	}
 	
@@ -37,10 +37,11 @@ public class BSERReferralTask extends Task{
 		String initatorIdentifierValue, String recipientIdentifierSystem, 
 		String recipientIdentifierValue, Reference PLACorganization,
 			Reference FILLorganization, TaskStatus status, CodeableConcept businessStatus,
-			Reference serviceRequest, Date authoredOn,
+			Reference serviceRequest, Reference patient, Date authoredOn,
 			Reference referralInitiatorReference,
 			Reference referralRecipientReference) {
 		CommonUtil.isValidReference(serviceRequest, "ServiceRequest");
+		CommonUtil.isValidReference(patient, "Patient");
 		if(PLACorganization != null){
 			CommonUtil.isValidReference(PLACorganization, "Organization");
 		}
@@ -70,6 +71,7 @@ public class BSERReferralTask extends Task{
 		super.setStatus(status);
 		super.setBusinessStatus(businessStatus);
 		super.setFocus(serviceRequest);
+		super.setFor(patient);
 		super.setAuthoredOn(authoredOn);
 		super.setRequester(referralInitiatorReference);
 		super.setOwner(referralRecipientReference);
