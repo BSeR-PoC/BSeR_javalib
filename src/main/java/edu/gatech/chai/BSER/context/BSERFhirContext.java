@@ -1,13 +1,10 @@
 package edu.gatech.chai.BSER.context;
 
-import java.util.HashMap;
-
 import ca.uhn.fhir.context.FhirContext;
+import ca.uhn.fhir.context.FhirVersionEnum;
 import edu.gatech.chai.BSER.model.BSERArthritusFeedbackObservation;
-import edu.gatech.chai.BSER.model.BSERArthritusReferralFeedbackSupportingInfo;
 import edu.gatech.chai.BSER.model.BSERConsent;
 import edu.gatech.chai.BSER.model.BSERCoverage;
-import edu.gatech.chai.BSER.model.BSERDiabetesPreventionReferralFeedbackSupportingInformation;
 import edu.gatech.chai.BSER.model.BSEREducationLevel;
 import edu.gatech.chai.BSER.model.BSERHA1CObservation;
 import edu.gatech.chai.BSER.model.BSEROrganization;
@@ -23,11 +20,10 @@ import edu.gatech.chai.BSER.model.BSERReferralServiceRequest;
 import edu.gatech.chai.BSER.model.BSERReferralTask;
 import edu.gatech.chai.BSER.model.BSERServiceDeliveryLocation;
 import edu.gatech.chai.BSER.model.ODHEmploymentStatus;
-import edu.gatech.chai.USCore.context.USCoreContext;
 import edu.gatech.chai.USCore.model.USCoreAllergyIntolerance;
 import edu.gatech.chai.USCore.model.USCoreCarePlan;
 import edu.gatech.chai.USCore.model.USCoreCareTeam;
-import edu.gatech.chai.USCore.model.USCoreCondition;
+import edu.gatech.chai.USCore.model.USCoreConditionProblemsAndHealthConcerns;
 import edu.gatech.chai.USCore.model.USCoreDiagnosticReportLab;
 import edu.gatech.chai.USCore.model.USCoreDiagnosticReportNote;
 import edu.gatech.chai.USCore.model.USCoreOrganization;
@@ -36,13 +32,13 @@ import edu.gatech.chai.USCore.model.USCoreVitalSigns;
 
 public class BSERFhirContext extends FhirContext{
 	
-	public BSERFhirContext() {
+	public BSERFhirContext(final FhirVersionEnum theVersion) {
+		super(theVersion);
+		
 		//BSER IG
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ArthritusFeedbackObservation", BSERArthritusFeedbackObservation.class);
-		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-ArthritusFeedbackSupportingInfo", BSERArthritusReferralFeedbackSupportingInfo.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-Consent", BSERConsent.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-Coverage", BSERCoverage.class);
-		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-DiabetesPreventionReferralFeedbackSupportingInformation", BSERDiabetesPreventionReferralFeedbackSupportingInformation.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-EducationLevel", BSEREducationLevel.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-HA1CObservation", BSERHA1CObservation.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-Organization", BSEROrganization.class);
@@ -63,7 +59,7 @@ public class BSERFhirContext extends FhirContext{
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance", USCoreAllergyIntolerance.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-careplan", USCoreCarePlan.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-careteam", USCoreCareTeam.class);
-		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition", USCoreCondition.class);
+		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition-problems-health-concerns", USCoreConditionProblemsAndHealthConcerns.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab", USCoreDiagnosticReportLab.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note", USCoreDiagnosticReportNote.class);
 		this.setDefaultTypeForProfile("http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization", USCoreOrganization.class);

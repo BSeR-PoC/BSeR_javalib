@@ -1,8 +1,5 @@
 package edu.gatech.chai.BSER.model.util;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -54,7 +51,7 @@ public class CommonUtil {
 		return null;
 	}
 	
-	public static boolean isValidReference(Reference reference,String sourceType) {
+	public static boolean isValidReference(Reference reference, String sourceType) {
 		if (sourceType.equals(reference.getReferenceElement().getResourceType())) {
 			return true;
 		} else {
@@ -100,5 +97,9 @@ public class CommonUtil {
 
 	public static CodeableConcept recipientIdentifierType() {
 		return new CodeableConcept(new Coding("http://terminology.hl7.org/CodeSystem/v2-0203", "FILL", null));
+	}
+
+	public static CodeableConcept problemListItemCategory() {
+		return new CodeableConcept(new Coding("http://terminology.hl7.org/CodeSystem/condition-category", "problem-list-item", null));
 	}
 }
