@@ -23,18 +23,18 @@ public class BSERReferralMessageBundle extends Bundle{
 	}
 	
 	public BSERReferralMessageBundle addEmploymentStatus(ODHEmploymentStatus employmentStatus) {
-		this.addEntry(new BundleEntryComponent().setFullUrl(employmentStatus.getIdElement().toVersionless().getValue()).setResource(employmentStatus));
+		this.addEntry(new BundleEntryComponent().setFullUrl(employmentStatus.fhirType()+"/"+employmentStatus.getIdPart()).setResource(employmentStatus));
 		return this;
 		
 	}
 	
 	public BSERReferralMessageBundle addPatientConsent(BSERConsent consent) {
-		this.addEntry(new BundleEntryComponent().setFullUrl(consent.getIdElement().toVersionless().getValue()).setResource(consent));
+		this.addEntry(new BundleEntryComponent().setFullUrl(consent.fhirType()+"/"+consent.getIdPart()).setResource(consent));
 		return this;
 	}
 	
 	public BSERReferralMessageBundle addEducationLevel(BSEREducationLevel educationLevel) {
-		this.addEntry(new BundleEntryComponent().setFullUrl(educationLevel.getIdElement().toVersionless().getValue()).setResource(educationLevel));
+		this.addEntry(new BundleEntryComponent().setFullUrl(educationLevel.fhirType()+"/"+educationLevel.getIdPart()).setResource(educationLevel));
 		return this;
 	}
 }
