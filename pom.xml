@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.gatech.chai</groupId>
   <artifactId>BSER_javalib</artifactId>
-  <version>0.2.0-STU1</version>
+  <version>0.2.1-STU1</version>
   <name>BSER Implementation Guide Library</name>
   <description>A Implementation Model of the BSER HL7 FHIR IG</description>
   <properties>

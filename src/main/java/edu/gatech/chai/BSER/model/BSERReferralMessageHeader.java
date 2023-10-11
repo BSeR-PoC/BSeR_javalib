@@ -47,4 +47,8 @@ public class BSERReferralMessageHeader extends MessageHeader{
 	public static boolean isBSERReferralMessageHeader(BSERReferralMessageHeader bserReferralMessageHeader) {
 		return BSERReferralMessageHeaderUtil.eventCoding.equalsShallow(bserReferralMessageHeader.getEventCoding());
 	}
+
+	public static boolean isBSERReferralMessageHeader(MessageHeader bserReferralMessageHeader) {
+		return BSERReferralMessageHeaderUtil.eventCoding.equalsShallow(bserReferralMessageHeader.getEventCoding());
+	}
 }
