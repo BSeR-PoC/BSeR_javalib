@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.gatech.chai</groupId>
   <artifactId>BSER_javalib</artifactId>
-  <version>0.2.1-STU1</version>
+  <version>0.2.3-STU1</version>
   <name>BSER Implementation Guide Library</name>
   <description>A Implementation Model of the BSER HL7 FHIR IG</description>
   <properties>
@@ -11,7 +11,7 @@
     <java.version>17</java.version>
     <maven.compiler.release>${java.version}</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <fhir.version>6.4.1</fhir.version>
+    <fhir.version>6.8.2</fhir.version>
   </properties>
   <dependencies>
     <dependency>
@@ -43,7 +43,7 @@
     <dependency>
       <groupId>edu.gatech</groupId>
       <artifactId>USCore</artifactId>
-      <version>0.1.1-SNAPSHOT-STU5</version>
+      <version>0.1.2-SNAPSHOT-STU5</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
     <dependency>
