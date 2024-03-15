@@ -8,7 +8,7 @@ import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.BSER.model.util.CommonUtil;
 import edu.gatech.chai.USCore.model.USCoreConditionProblemsAndHealthConcerns;
 
-@ResourceDef(name = "Organization", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-Diagnosis")
+@ResourceDef(name = "Condition", profile = "http://hl7.org/fhir/us/bser/StructureDefinition/BSeR-Diagnosis")
 public class BSERDiagnosis extends USCoreConditionProblemsAndHealthConcerns{
 
 	/**
