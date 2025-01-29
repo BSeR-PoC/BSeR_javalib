@@ -32,6 +32,6 @@ public class BSERConsent extends Consent{
 		super.setPatient(patient);
 		super.setDateTime(dateTime);
 		super.addPerformer(performer);
-		super.setProvision(new provisionComponent().setType(provisionType));
+		super.setProvision(new ProvisionComponent().setType(provisionType));
 	}
 }
